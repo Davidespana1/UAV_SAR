@@ -1,0 +1,16 @@
+---------------CONDA------------------------------ (Aids in Python Dependencies)
+
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm ~/miniconda3/miniconda.sh
+source ~/miniconda3/bin/activate
+conda init --all
+
+**Useful Conda Commands**
+exit()    <------command to exit in conda
+conda list  <----lists all mini conda packages
+conda create --name (   )  python=3.??    (Basically create an Env with that python version)
+conda activate (Name)
+conda deactivate (Name)
+conda install --------
