@@ -1,7 +1,0 @@
-sudo apt update && sudo apt upgrade
-sudo reboot 
-sudo apt dist-upgrade
-sudo reboot
-sudo apt install nvidia-Jetpack
-sudo reboot
-sudo pip3 install -U jetson-stats  (Run 'jtop' in terminal for jetson stats)
