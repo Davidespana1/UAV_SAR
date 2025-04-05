@@ -1,0 +1,87 @@
+Feature Extraction
+Both images (frame 1 and frame 2) are passed through a shared CNN encoder.
+
+The encoder extracts high-dimensional feature maps for both images.
+
+These features capture texture, edges, and structure — more robust than raw pixels.
+
+All-Pairs Correlation Volume
+RAFT computes correlation between every pixel in image 1 and every pixel in image 2 in the feature space.
+
+This creates a 4D correlation volume of shape:
+(H1, W1, H2, W2),
+which stores how similar every pair of pixels is.
+
+This is like comparing every possible match between the two images — brute-force but efficient with tensor ops.
+
+Recurrent Update Operator
+It initializes a zero flow field (no movement).
+
+Then, it uses a recurrent GRU-like module to iteratively refine the flow.
+
+At each step, it:
+
+Samples from the correlation volume around the current flow estimate.
+
+Predicts a flow increment (delta flow).
+
+Updates the flow field.
+
+Repeats for 12–32 iterations.
+
+The GRU "learns to correct itself" over time, refining motion estimates with each pass.
+
+4. Upsampling and Final Flow
+After iterations are complete, the coarse flow (at feature resolution) is upsampled to the full image resolution using learned convex combinations (not naive interpolation).
+
+📈 Key Advantages
+Dense and accurate — it estimates motion for every pixel.
+
+High resolution thanks to refinement + learned upsampling.
+
+End-to-end trainable.
+
+Works well even with large displacements (better than FlowNet, PWC-Net).
+
+👁️‍🗨️ Visualization (What You See in Your Script)
+Each flow vector (dx, dy) shows motion of a pixel from frame1 → frame2.
+
+Color-coded flow map:
+
+Hue = direction of movement
+
+Brightness = magnitude (speed)
+
+Arrow overlays (your implementation): You’re drawing directional arrows to visualize actual movement directions from RAFT’s output.
+
+ Applications in Your Drone Context
+Motion Estimation: Where objects are moving and how fast (e.g., people, cars).
+
+Scene Dynamics: If environment is static but something is moving — great for search/rescue.
+
+Tracking: Combined with YOLO, it tells you if a detected object is actually moving.
+
+Obstacle motion prediction: If combined with multiple frame deltas.
+
+Hue (Color) = Motion Direction
+
+Imagine a compass:
+
+🔴 Red → Rightward (0°)
+
+🟡 Yellow → Down-Right (~45°)
+
+🟢 Green → Down (~90°)
+
+🔵 Blue → Left (~180°)
+
+🟣 Purple → Up-Left (~225°)
+
+🔴 (wraps back to red) → Up (~270°)
+
+So if an object is moving left, you’ll see it colored blue. If it’s moving down, you’ll get green.
+
+Value (Brightness) = Speed
+Bright color → Fast motion
+
+Dark color → Slow or no motion
