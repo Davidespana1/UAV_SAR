@@ -1,0 +1,28 @@
+git clone https://github.com/jetsonhacks/jetson-linux-build.git
+cd  jetson-orin-kernel-builder
+*in new terminal window
+cd /usr/src
+go to developer.nvidia.com/embedded/jetson-linux-r3643
+scroll down click Driver Package (BSP) Sources 
+in terminal cd'd into jetson-orin-kernel-builder 
+./scripts/get_kernel_sources.sh   *wait till its done*
+go back to /usr/src terminal
+cd kernel
+cd kernel-jammy-src
+cat .config     (should list stuff)
+go back to jetson-orin-kernel-builder terminal
+./scripts/edit_config_cli.sh
+Y 
+on general setup press enter then press '/' on keyboard
+look up CH341
+Ctrl-C
+./scripts/edit_config_gui.sh
+1
+when it opens menu click find under edit top left
+search 'CH341'   click the first thing that pops up it should change from n --> m 
+click file save then exit out
+./scripts/make_kernel.sh   (this will take awhile)
+save the kernel image location in a txt file
+./scripts/make_kernel_modules.sh (this will take awhile)
+n 
+follow jetsonhacks build kernel modules guide
