@@ -1,0 +1,8 @@
+https://code.visualstudio.com/updates/v1_85          Download Linux:Arm 
+
+Linux Arm64 debian     https://update.code.visualstudio.com/1.85.2/linux-deb-arm64/stable
+
+cd Downloads
+wget https://update.code.visualstudio.com/1.85.2/linux-deb-arm64/stable
+sudo dpkg -i stable
+'code' to launch
