@@ -25,5 +25,6 @@ Opencv
 Yolov11
 
 
-Setup instructions for Jetson Orin on Jetpack 6.2 can be found in # Setup.txt
+Setup instructions for Jetson Orin on Jetpack 6.2 can be found in Setup
+
 
