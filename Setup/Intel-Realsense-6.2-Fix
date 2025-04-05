@@ -1,3 +1,5 @@
+----------------Must Build Kernel Modules---------------------
+
 git clone https://github.com/jetsonhacks/jetson-linux-build.git
 cd  jetson-orin-kernel-builder
 *in new terminal window
@@ -26,3 +28,16 @@ save the kernel image location in a txt file
 ./scripts/make_kernel_modules.sh (this will take awhile)
 n 
 follow jetsonhacks build kernel modules guide
+
+
+-------------On Jetson Camera Setup-------------- (REALSENSE)
+
+must complete kernel build to do this
+
+Jetpack 6.2 does not support USB C Cameras i.e Intel Realsense D435i so we follow Jetsonhacks guide
+
+https://www.youtube.com/watch?v=7P6I2jeJNYo&feature=youtu.be&themeRefresh=1            Build Kernel Modules 
+
+https://www.youtube.com/watch?v=FpMCJsg_KmE&embeds_referring_euri=https%3A%2F%2Fjetsonhacks.com%2F&source_ve_path=MjM4NTE  Build Camera support
+
+Test with 'realsense-viewer'
