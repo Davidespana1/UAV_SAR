@@ -1,0 +1,17 @@
+Tutorial on how to install zedx sdk / GSML2 Drivers
+
+https://www.stereolabs.com/developers/release/5.0#82af3640d775
+
+Zed SDK : https://download.stereolabs.com/zedsdk/5.0/l4t36.4/jetsons?_gl=1*s5zsxs*_gcl_au*ODMwMzUzODEyLjE3NDMzNTcxMDE.
+
+https://www.stereolabs.com/developers/drivers                                                                                                                            **************Copy and Paste the links in search bar***************
+
+GSML2 Support : https://stereolabs.sfo2.cdn.digitaloceanspaces.com/utils/drivers/ZEDX/1.3.0/R36.4/stereolabs-zedlink-duo_1.3.0-LI-MAX96712-all-L4T36.4.0_arm64.deb                   
+
+cd Downloads 
+chmod +x ZED_SDK_Tegra (Press Tab it will autofill)
+chmod +x stereolabs (Press Tab it will autofill)
+./ZED  (Press tab after ZED it will autofill the SDK) (*will take awhile)
+sudo dpkg -i stereolabs (press tab it will autofill)
+
+sudo reboot (Connect camera via Fakra cable into the GSML2 Capture Card)
